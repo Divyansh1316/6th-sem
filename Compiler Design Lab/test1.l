@@ -15,3 +15,8 @@ int main()
 	yylex();
 	return 0;
 }
+
+//to run the file:
+//lex test1.l
+//cc lex.yy.c
+//./a.out
