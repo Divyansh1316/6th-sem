@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calender</title>
+  </head>
+  <body>
+    <h1>Calender</h1>
+    <h2>Select Year</h2>
+    <select name="year" id="year">
+      <option value="2010">2010</option>
+      <option value="2011">2011</option>
+      <option value="2012">2012</option>
+      <option value="2013">2013</option>
+      <option value="2014">2014</option>
+      <option value="2015">2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+    </select>
+    <h2>Select Month</h2>
+    <select name="month" id="month">
+      <option value="JAN">JAN</option>
+      <option value="FEB">FEB</option>
+      <option value="MAR">MAR</option>
+      <option value="APR">APR</option>
+      <option value="MAY">MAY</option>
+      <option value="JUN">JUN</option>
+      <option value="JUL">JUL</option>
+      <option value="AUG">AUG</option>
+      <option value="SEP">SEP</option>
+      <option value="OCT">OCT</option>
+      <option value="NOV">NOV</option>
+      <option value="DEC">DEC</option>
+    </select>
+    <button style="font-size: x-large" onclick="myFunc()">ok</button>
+    <script>
+      function myFunc() {
+        var year = document.getElementById("year").value;
+        var monthVal = document.getElementById("month").value;
+
+        var month = {
+          JAN: 0,
+          FEB: 1,
+          MAR: 2,
+          APR: 3,
+          MAY: 4,
+          JUN: 5,
+          JUL: 6,
+          AUG: 7,
+          SEP: 8,
+          OCT: 9,
+          NOV: 10,
+          DEC: 11,
+        };
+
+        var monthIndex = month[monthVal];
+
+        var last = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        if (year % 4 == 0) {
+          last[1] = 29;
+        }
+
+        var lastDay = last[monthIndex];
+
+        var d = new Date(year, monthIndex, 1);
+        var firstDay = d.getDay();
+
+        document.write(
+          '<table border="1" width="100%" cellspacing="5px" style="border-collapse: collapse; text-align: center;font-size: 30px;height:300px">' +
+            "<tr>" +
+            '<th colspan="7">' +
+            monthVal +
+            " " +
+            year +
+            "</th>" +
+            "</tr>" +
+            "<tr>" +
+            "<th>" +
+            "Sun" +
+            "</th>" +
+            "<th>" +
+            "Mon" +
+            "</th>" +
+            "<th>" +
+            "Tue" +
+            "</th>" +
+            "<th>" +
+            "Wed" +
+            "</th>" +
+            "<th>" +
+            "Thu" +
+            "</th>" +
+            "<th>" +
+            "Fri" +
+            "</th>" +
+            "<th>" +
+            "Sat" +
+            "</th>" +
+            "</tr>"
+        );
+
+        var day = 1;
+
+        for (let i = 0; i < 5; i++) {
+          document.write("<tr>");
+          for (let j = 0; j < 7; j++) {
+            if (i == 0 && j < firstDay) {
+              document.write("<td></td>");
+            } else if (day <= lastDay) {
+              document.write("<td>" + day + "</td>");
+              day++;
+            } else {
+              document.write("<td></td>");
+            }
+          }
+          document.write("</tr>");
+        }
+        document.write("</table>");
+      }
+    </script>
+  </body>
+</html>
