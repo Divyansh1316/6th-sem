@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum</title>
+  </head>
+  <body>
+    <label for="input">Num 1</label>
+    <input type="text" id="ip1" /><br /><br />
+    <label for="input2">Num 2</label>
+    <input type="text" id="ip2" /><br /><br />
+    <button onclick="func()">Click me</button>
+    <script>
+      function func() {
+        var x = parseInt(document.getElementById("ip1").value);
+        var y = parseInt(document.getElementById("ip2").value);
+        var z = x + y;
+        document.write(z);
+      }
+    </script>
+  </body>
+</html>

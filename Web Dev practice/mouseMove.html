@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse move</title>
+  </head>
+  <body>
+    <div
+      style="height: 400px; width: 400px; border: 5px solid"
+      onmousemove="myFunc(event)"
+    ></div>
+    <div id="demo"></div>
+    <button style="margin-top: 20px" onclick="resetFunc()">Reset</button>
+    <script>
+      function myFunc(e) {
+        X = e.clientX;
+        Y = e.clientY;
+        coor = "Coordinate: (" + X + "," + Y + ")";
+        document.getElementById("demo").innerHTML = coor;
+      }
+      function resetFunc() {
+        document.getElementById("demo").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>

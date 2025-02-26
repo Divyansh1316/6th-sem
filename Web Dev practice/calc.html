@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        background-color: #202020;
+      }
+      #div1 {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+      }
+      table {
+        background-color: #505050;
+        border-radius: 5%;
+        padding: 7px;
+        /* border-spacing: 10px; */
+      }
+      td {
+        padding: 3px;
+      }
+      button {
+        width: 80px;
+        height: 80px;
+        font-size: 30px;
+        border: none;
+        background-color: #303030;
+        color: white;
+        cursor: pointer;
+        border-radius: 100%;
+        font-weight: 400;
+      }
+      button:hover {
+        background-color: #363636;
+      }
+      .row1 {
+        background-color: #c1c1c1;
+        color: black;
+        font-weight: 600;
+      }
+      .row1:hover {
+        background-color: #ebebeb;
+      }
+      .col4 {
+        background-color: #ec920b;
+      }
+      .col4:hover {
+        background-color: #efa537;
+      }
+      #col41 {
+        padding-top: 15px;
+      }
+      #ip {
+        font-size: 40px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        background-color: #303030;
+        color: white;
+      }
+      #ip:hover {
+        background-color: #363636;
+      }
+      h1 {
+        text-align: center;
+        color: white;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CALCULATOR</h1>
+    <div id="div1">
+      <table>
+        <tr>
+          <td colspan="4">
+            <input type="text" size="12" id="ip" disabled />
+          </td>
+        </tr>
+        <tr>
+          <td><button class="row1" onclick="clearIP()">AC</button></td>
+          <td><button class="row1" onclick="reciprocal()">1/X</button></td>
+          <td><button class="row1" onclick="addVal('%')">%</button></td>
+          <td><button class="col4" onclick="addVal('/')">/</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="addVal('7')">7</button></td>
+          <td><button onclick="addVal('8')">8</button></td>
+          <td><button onclick="addVal('9')">9</button></td>
+          <td>
+            <button class="col4" id="col41" onclick="addVal('*')">*</button>
+          </td>
+        </tr>
+        <tr>
+          <td><button onclick="addVal('4')">4</button></td>
+          <td><button onclick="addVal('5')">5</button></td>
+          <td><button onclick="addVal('6')">6</button></td>
+          <td><button class="col4" onclick="addVal('-')">-</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="addVal('1')">1</button></td>
+          <td><button onclick="addVal('2')">2</button></td>
+          <td><button onclick="addVal('3')">3</button></td>
+          <td><button class="col4" onclick="addVal('+')">+</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="addVal('0')">0</button></td>
+          <td><button onclick="plusMinus()">+/-</button></td>
+          <td><button onclick="addVal('.')">.</button></td>
+          <td><button class="col4" onclick="calc()">=</button></td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      function addVal(val) {
+        document.getElementById("ip").value += val;
+      }
+      function calc() {
+        var text = document.getElementById("ip").value;
+        try {
+          if (text) {
+            var z = eval(text);
+            document.getElementById("ip").value = z;
+          }
+        } catch (error) {
+          document.getElementById("ip").value = "Error";
+        }
+
+        // var digit = parseInt(document.getElementById("dig").value);
+        // if (digit >= 0 && digit <= 9) {
+        //   document.write(digit);
+        // }
+      }
+      function plusMinus() {
+        var z = document.getElementById("ip").value;
+        if (z > 0) {
+          var nVal = "-" + z;
+          document.getElementById("ip").value = nVal;
+        } else {
+          var nVal = "+" + z;
+          document.getElementById("ip").value = nVal;
+        }
+      }
+      function reciprocal() {
+        var text = document.getElementById("ip").value;
+        try {
+          if (text) {
+            var z = eval(1 / text);
+            document.getElementById("ip").value = z;
+          }
+        } catch (error) {
+          document.getElementById("ip").value = "Error";
+        }
+      }
+      function clearIP() {
+        document.getElementById("ip").value = "";
+      }
+    </script>
+  </body>
+</html>

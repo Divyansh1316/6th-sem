@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factorial</title>
+  </head>
+  <body>
+    <label for="input">Enter number</label>
+    <input type="text" id="ip1" /><br /><br />
+
+    <label for="res">Factorial</label>
+    <input type="text" id="ip2" /><br /><br />
+
+    <button onclick="func()">Click me</button>
+    <button onclick="func2()">Reset</button>
+    <script>
+      function func() {
+        var x = parseInt(document.getElementById("ip1").value);
+        var fact = 1;
+        for (let i = 1; i <= x; i++) {
+          fact = fact * i;
+        }
+        // document.write(fact);
+        document.getElementById("ip2").value = fact; //automatic type conversion
+      }
+
+      function func2() {
+        document.getElementById("ip1").value = "";
+        document.getElementById("ip2").value = "";
+
+        //create a new window:
+
+        var myWind = window.open(
+          "https://www.google.com/",
+          "_blank", //_blank opens the URL in a new tab or window.
+          "width=500 height=800"
+        );
+        // myWind.document.write("Hello new window!");
+      }
+    </script>
+  </body>
+</html>
