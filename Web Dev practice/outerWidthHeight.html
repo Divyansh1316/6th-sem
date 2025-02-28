@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outer Width Height</title>
+  </head>
+  <body>
+    <button onclick="func()">Click to find size of window</button>
+    <div id="demo"></div>
+
+    <script>
+      function func() {
+        var myWind = window.open("", "", "width=400,height=800");
+
+        setTimeout(() => {
+          var h = myWind.outerHeight;
+          var w = myWind.outerWidth;
+          var z = "Height : " + h + " Width : " + w;
+
+          myWind.document.body.innerHTML = `<h2>Height: ${h}px, Width: ${w}px</h2>`;
+
+          // myWind.document.body.innerHTML ="<h2>Height : " + h + " Width : " + w + "</h2>";
+
+          document.getElementById("demo").innerHTML = z;
+        }, 500);
+      }
+    </script>
+  </body>
+</html>

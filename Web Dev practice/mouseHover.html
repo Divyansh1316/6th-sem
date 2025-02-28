@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse hover</title>
+  </head>
+  <body>
+    <h3>Hover over the div to change its color!</h3>
+    <div
+      id="demo"
+      style="width: 400px; height: 400px; border: 2px solid"
+      onmouseover="func()"
+    ></div>
+
+    <script>
+      function func() {
+        var arr = ["blue", "yellow", "red", "orange", "pink", "green", "black"];
+
+        var x = Math.floor(Math.random() * 7);
+        console.log(x);
+
+        document.getElementById("demo").style.background = arr[x];
+      }
+    </script>
+  </body>
+</html>

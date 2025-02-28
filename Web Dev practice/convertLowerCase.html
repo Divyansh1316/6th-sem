@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convert Lower Case</title>
+  </head>
+  <body style="font-size: x-large">
+    <caption>
+      Enter some text :
+    </caption>
+    <input
+      type="text"
+      name="textField"
+      id="textField"
+      size="40"
+      style="border: 2px solid"
+      onkeypress="func(event)"
+    />
+    <script>
+      function func(e) {
+        e.preventDefault(); // to stop the default behavior of the key press (which adds the letter to the input field). When we press a key, the browser automatically adds that character to the input field before our JavaScript code runs. This can lead to issues like appending or combining both the original and lowercase versions of the letter.
+
+        var x = e.key.toLowerCase(); //key method to get the letter pressed
+        document.getElementById("textField").value += x;
+      }
+    </script>
+  </body>
+</html>
