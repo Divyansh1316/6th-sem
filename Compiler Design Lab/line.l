@@ -1,6 +1,6 @@
 %{
 #include<stdio.h>
-int sp=0,line=0,tab=0,c=0,word=0,letters=0;
+int sp=0,line=0,tab=0,c=0,word=0;
 %}
 %%
 [" "] {sp++;}
@@ -17,6 +17,6 @@ int main()
 {
 	printf("Enter a string : ");
 	yylex();
-	printf("Spaces : %d, Tabs : %d, special characters : %d, words : %d, letters : %d, lines : %d",sp,tab,c,word,letters,line);
+	printf("Spaces : %d, Tabs : %d, special characters : %d, words : %d, lines : %d",sp,tab,c,word,line);
 	return 0;
 }
