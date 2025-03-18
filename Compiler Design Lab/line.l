@@ -1,13 +1,13 @@
 %{
 #include<stdio.h>
-int sp=0,line=0,tab=0,c=0,word=0;
+int sp=0,line=0,tab=0,c=0,word=0,chars=0;
 %}
 %%
-[" "] {sp++;}
-[\t] {tab++;}
-[\n] {line++;}
-[a-zA-Z]* {word++;}
-. {c++;}
+[" "] {sp++; chars++;}
+[\t] {tab++; chars++;}
+[\n] {line++; chars++;}
+[a-zA-Z]* {word++; chars+=yyleng;}
+. {c++; chars++;}
 %%
 int yywrap()
 {
@@ -17,6 +17,6 @@ int main()
 {
 	printf("Enter a string : ");
 	yylex();
-	printf("Spaces : %d, Tabs : %d, special characters : %d, words : %d, lines : %d",sp,tab,c,word,line);
+	printf("Spaces : %d, Tabs : %d, special characters : %d, words : %d, characters : %d, lines : %d",sp,tab,c,word,chars,line);
 	return 0;
 }
