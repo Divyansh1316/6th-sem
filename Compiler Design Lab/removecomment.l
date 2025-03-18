@@ -37,3 +37,27 @@ int main()
 	fclose(outfile);
 	return EXIT_SUCCESS;
 }
+
+
+
+/*
+Input file:
+hello this is 
+//divyansh
+this is a new line
+
+/*
+new line
+
+this is multiline comment
+*/
+delete it 
+
+// this is a single-line comment
+printf("Hello worlds!\n"); /*This is a multi line
+comment */
+return 0;
+
+//hello divyansh
+int x=123;
+*/
