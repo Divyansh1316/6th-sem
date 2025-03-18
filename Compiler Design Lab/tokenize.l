@@ -8,7 +8,7 @@ void print_token(char *type,char *value)
 %}
 %%
 "+"|"-"|"*"|"/"|"="|"=="|"!"|"!="|"<"|">"|"<="|">="|"%" { print_token("Operator",yytext); }
-","|";"|"{"|"}"|"["|"]"|"("|")"|"<"|">"|"<="|">="|"%" { print_token("Separator",yytext); }
+","|";"|"{"|"}"|"["|"]"|"("|")" { print_token("Separator",yytext); }
 "if"|"while"|"for"|"int"|"float"|"char"|"double"|"continue"|"switch"|"do"|"break"|"else" { print_token("Keyword",yytext); }
 [a-zA-Z_][a-zA-Z0-9_]* { print_token("Identifier",yytext); }
 [0-9]* { print_token("Constant",yytext); }
