@@ -4,8 +4,8 @@
 FILE *outfile;
 %}
 %%
-[\t\n]+ {fprintf(outfile," ");}
-[^\t\n]+ {fprintf(outfile,"%s",yytext);}
+[ \t\n]+ {fprintf(outfile," ");}
+[^ \t\n]+ {fprintf(outfile,"%s",yytext);}
 %%
 int yywrap()
 {
