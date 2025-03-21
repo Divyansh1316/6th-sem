@@ -138,14 +138,7 @@
         // }
       }
       function plusMinus() {
-        var z = document.getElementById("ip").value;
-        if (z > 0) {
-          var nVal = "-" + z;
-          document.getElementById("ip").value = nVal;
-        } else {
-          var nVal = "+" + z;
-          document.getElementById("ip").value = nVal;
-        }
+        document.getElementById("ip").value *= -1;
       }
       function reciprocal() {
         var text = document.getElementById("ip").value;
