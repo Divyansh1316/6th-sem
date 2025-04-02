@@ -34,5 +34,3 @@ int main()
 }
 
 //starting with 1
-//starting with 11
-//ending with 11
