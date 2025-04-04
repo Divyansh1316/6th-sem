@@ -40,5 +40,3 @@ int main()
 }
 
 //design a dfa using lex code that accepts all the strings having even number of a and even number of b
-//design a dfa using lex code that accepts all the strings having even number of a followed by even number of b
-//design a dfa using lex code that accepts all the strings having even number of a or even number of b
