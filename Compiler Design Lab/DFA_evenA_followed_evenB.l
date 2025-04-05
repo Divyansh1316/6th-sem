@@ -2,13 +2,20 @@
 #include<stdio.h>
 %}
 
-%s A B C D INV
+%s A B C D R INV
 
 %%
 <INITIAL>a BEGIN A;
+<INITIAL>b BEGIN R;
 <INITIAL>[^a|^b|^\n] BEGIN INV;
 
+<R>a BEGIN R;
+<R>b BEGIN R;
+<R>[^a|^b|^\n] BEGIN INV;
+<R>\n {BEGIN INITIAL; printf("Rejected\n");};
+
 <A>a BEGIN B;
+<A>b BEGIN R;
 <A>[^a|^b|^\n] BEGIN INV;
 <A>\n {BEGIN INITIAL; printf("Rejected\n");};
 
@@ -18,10 +25,12 @@
 <B>\n {BEGIN INITIAL; printf("Rejected\n");};
 
 <C>b BEGIN D;
+<C>a BEGIN R;
 <C>[^a|^b|^\n] BEGIN INV;
 <C>\n {BEGIN INITIAL; printf("Rejected\n");};
 
 <D>b BEGIN C;
+<D>a BEGIN R;
 <D>[^a|^b|^\n] BEGIN INV;
 <D>\n {BEGIN INITIAL; printf("Accepted\n");};
 
