@@ -27,8 +27,8 @@
         if (empty($first_name) || empty($last_name)) {
           echo "<br>One of the fields is empty";
         }
-        if (strlen($first_name)<5) {
-          echo "First name less than 5 characters";
+        if (strlen($first_name)<5 || strlen($last_name)<5) {
+          echo "Either First name or last name less than 5 characters";
         }
         if (!preg_match("/^[a-zA-Z]+$/",$first_name)) {
           echo "First name should contain only letters.";
