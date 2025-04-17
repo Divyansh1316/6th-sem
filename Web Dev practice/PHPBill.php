@@ -26,10 +26,19 @@
         height:30px; 
         width:80px;
       }
+      tr{
+        height:50px;
+      }
       #ipBox{
         margin-top:20px;
         height:20px;
         width:200px;
+      }
+      p{
+        margin-left: 100px;
+        font-size:x-large;
+        font-weight: bold;
+        color:red;
       }
     </style>
   </head>
@@ -93,17 +102,34 @@
         $consumer_name=test_fn($_REQUEST['c_name']);
         $prev_reading=test_fn($_REQUEST['prev_r']);
         $present_reading=test_fn($_REQUEST['present_r']);
-        
-        $unit=$present_reading-$prev_reading;
-        $amount=$unit*4;
-        
-        echo "Consumer number ".$consumer_no."<br>";
-        echo "Consumer name ".$consumer_name."<br>";
-        echo "Previous reading ".$prev_reading."<br>";
-        echo "Present reading ".$present_reading."<br>";
-
-        echo "Units consumed ".$unit."<br>";
-        echo "Amount ".$amount."<br>";
+        if (empty($consumer_no)||empty($consumer_name)||empty($prev_reading)||empty($present_reading)) {
+          echo "<br><p>* One of the fields is empty</p>";
+        }
+        else{
+          if (!preg_match("/^[a-zA-z]+$/",$consumer_name)) {
+            echo "<br><p>* Customer name should only contain alphabets</p>";
+          }
+          else if (!preg_match("/^[0-9]+$/",$prev_reading)) {
+            echo "<br><p>* Previous reading should only contain numbers</p>";
+          }
+          else if (!preg_match("/^[0-9]+$/",$present_reading)) {
+            echo "<br><p>* Present reading should only contain numbers</p>";
+          }
+          else{
+            $unit=$present_reading-$prev_reading;
+            $amount=$unit*4;
+            
+            echo "<br><br><table>";
+            echo "<tr id='orange'><th colspan='2'><h2>ELECTRICITY BILL</h2></th></tr>";
+            echo "<tr id='yellow'><td>Consumer number</td><td>$consumer_no</td></tr>";
+            echo "<tr><td>Consumer name</td><td>$consumer_name</td></tr>";
+            echo "<tr id='yellow'><td>Previous reading</td><td>$prev_reading</td></tr>";
+            echo "<tr><td>Present reading</td><td>$present_reading</td></tr>";
+            echo "<tr id='yellow'><td>Units consumed</td><td>$unit</td></tr>";
+            echo "<tr><td>Amount</td><td>$amount</td></tr>";
+            echo "</table>";
+          }
+        }
       }
     ?>
   </body>
