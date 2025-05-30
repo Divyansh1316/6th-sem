@@ -1,0 +1,64 @@
+<!-- Objective: To create an html page with three button START PAUSE and
+RESET for controlling stopwatch.
+CODE: -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stopwatch</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+      #display {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      button {
+        font-size: 18px;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="display">00:00:00</div>
+    <button onclick="start()">START</button>
+    <button onclick="pause()">PAUSE</button>
+    <button onclick="reset()">RESET</button>
+    <script>
+      let timer;
+      let seconds = 0;
+      let isRunning = false;
+      function updateDisplay() {
+        const hrs = String(Math.floor(seconds / 3600)).padStart(2, "0");
+        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+        const secs = String(seconds % 60).padStart(2, "0");
+        document.getElementById(
+          "display"
+        ).textContent = `${hrs}:${mins}:${secs}`;
+      }
+      function start() {
+        if (!isRunning) {
+          isRunning = true;
+          timer = setInterval(() => {
+            seconds++;
+            updateDisplay();
+          }, 1000);
+        }
+      }
+      function pause() {
+        isRunning = false;
+        clearInterval(timer);
+      }
+      function reset() {
+        pause();
+        seconds = 0;
+        updateDisplay();
+      }
+    </script>
+  </body>
+</html>
