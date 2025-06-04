@@ -6,9 +6,8 @@
 %token A B NL
 
 %%
-stmt: S NL {printf("Valid string\n"); exit(0);};
-S: A A T
-T: A T B
+stmt: A A S NL {printf("Valid string\n"); exit(0);};
+S: A S B
 	| ;
 %%
 
